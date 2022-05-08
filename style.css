@@ -1,0 +1,35 @@
+body{
+    background-color: #fff;
+}
+
+.text, .title{
+   text-align: center;
+}
+
+.answer{
+    background-color: bisque;
+    display:block;
+}
+.numbers{
+    word-wrap: break-word;
+}
+
+.btn{
+    font-weight: 400;
+    padding: 6px 40px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.c1{
+    border: 2px black solid ;
+    border-radius: 25px;
+    padding: 10px;
+    padding-top: 15px;
+    margin: 20px 500px 20px 500px;
+    text-align: center;
+}
+
+.questions{
+    background-color: #E5E5E5;
+}

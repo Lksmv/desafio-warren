@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio3</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <script src="script.js" charset="UTF-8" defer></script>
+</head>
+<body>
+    <h1 class="title">Desafio 3 Warren</h1>
+    <p class="text">Dado um vetor de números e um número n. Determine a soma com o menor número de elementos entre os números do vetor mais próxima de n e também mostre os elementos que compõem a soma. Para criar a soma, utilize qualquer elemento do vetor uma ou mais vezes.</p>
+    <div class="questions c1">
+        Numero n: 
+        <input type="text" id="numeroN" value="10" name="numeroN" size="10" /> 
+        Vetor de numeros (Separados por ','): 
+        <input type="text" id="vetorNumeros" value="2,3,4" name="vetorNumeros" size="45" /> 
+
+        <input type="button" onclick=determinarMenoresVetores() class="btn" name="btn" value="Validar">
+    </div>     
+    <div class="answer c1">
+       <p class="numbers">Resposta: </p>
+    </div>
+    
+</body>
+</html>

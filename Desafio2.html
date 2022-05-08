@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio2</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <script src="script.js" charset="UTF-8" defer></script>
+</head>
+<body onload="validar()">
+    <h1 class="title">Desafio 2 Warren</h1>
+    <p class="text">Construa um algoritmo que dado o tempo de chegada de cada aluno e o limite x de alunos presentes, determina se a classe vai ser cancelada ou não ("Aula cancelada” ou “Aula normal”).</p>
+    <div class="questions c1">
+        Limite x de Alunos: 
+        <input type="text" id="limite" value="3" name="Limite" size="10" /> 
+        Tempo de chegada (Separados por ','): 
+        <input type="text" id="tempo" value="-2, -1, 0, 1, 2" name="Tempo" size="45" /> 
+
+        <input type="button" onclick=validar() class="btn" name="btn" value="Validar">
+    </div>     
+    <div class="answer c1">
+       <p class="numbers">Resposta: </p>
+    </div>
+</body>
+</html>
