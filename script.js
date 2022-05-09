@@ -1,15 +1,30 @@
 const resposta = document.querySelector('.answer');
-const temporarioos = document.querySelector('#temporarioo');
+const tempo = document.querySelector('#tempo');
 const limite = document.querySelector('#limite');
 const numero = document.querySelector('#numeroN');
 const vetorNumeros = document.querySelector('#vetorNumeros');
-
+/**
+ * Esta é uma função que retorna o inverso no numero informado.
+ * 
+ * @example 
+ *   reverso(305); // 503
+ * 
+ * @param   {Number} obrigatorio   Parametro obrigatório
+ * @returns {String}
+ */
 function reverso(n) {
     let arr = String(n).split("");
     arr.reverse();
     return arr.join("");
 }
 
+/**
+ * Esta é uma função que ira verificar a soma do numero mais seu inverso e
+ * adicionar na tela a resposta contendo todos os valores.
+ * 
+ * @example 
+ *   verificarSoma(); //  * 
+ */
 function verificarSoma() {
     let n = 1;
     let nReverso = reverso(n);
@@ -17,9 +32,7 @@ function verificarSoma() {
     let arr = [];
     while (n < 1000000) {
         if (isImpar(soma) && nReverso.charAt(0) != '0' && soma < 1000000) {
-            console.log(n + ' + ' + nReverso + " = " + soma);
             arr.push(n);
-
         }
         n = n + 1;
         nReverso = reverso(n);
@@ -29,6 +42,15 @@ function verificarSoma() {
     resposta.innerHTML = "<p class='numbers'>Resposta:" + arr + "</p>"
 }
 
+/**
+ * Esta é uma função que retorna true caso a soma informada seja impar, e false caso seja par
+ * 
+ * @example 
+ *   isImpar(305); // true
+ * 
+ * @param   {Number} obrigatorio   Parametro obrigatório
+ * @returns {Boolean}
+ */
 function isImpar(sum) {
     if (sum % 2 == 0)
         return false
@@ -36,9 +58,16 @@ function isImpar(sum) {
 
 }
 
+/**
+ * Esta é uma função que verificar a quantidade de alunos e indica na tela se a aula sera normal ou
+ * se sera cancelada.
+ * 
+ * @example 
+ *   validar(); //
+ */
 function validar() {
     let x = parseInt(limite.value)
-    let arr = temporarioos.value.replaceAll(" ", "").split(",");
+    let arr = tempo.value.replaceAll(" ", "").split(",");
     let contador = 0;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] <= 0) {
@@ -52,6 +81,15 @@ function validar() {
     }
 }
 
+/**
+ * Esta é uma função que retorna a soma dos valores do vetor informada.
+ * 
+ * @example 
+ *   somarVetor([2,3,4]); // 9
+ * 
+ * @param   {Number} obrigatorio   Parametro obrigatório
+ * @returns {Number}
+ */
 function somarVetor(vet) {
     let soma = 0;
     vet.forEach(element => {
@@ -60,14 +98,15 @@ function somarVetor(vet) {
     return soma;
 }
 
-function distanciaObj(num, obj) {
-    if (obj > num) {
-        return obj - num;
-    } else {
-        return num - obj;
-    }
-}
-
+/**
+ * Esta é uma função que converte e ordena os valores de um array e o retorna 
+ * 
+ * @example 
+ *   convertAndSort(['3','2','4']); // [2,3,4]
+ * 
+ * @param   {String} obrigatorio   Parametro obrigatório
+ * @returns {Number}
+ */
 function convertAndSort(arr) {
     arrOfNum = [];
     arr.forEach(str => {
@@ -76,43 +115,58 @@ function convertAndSort(arr) {
     arrOfNum.sort((a, b) => a - b);
     return arrOfNum;
 }
-
+/**
+ * Esta é uma função que verifica as combinaçoes dos vetores e indica na tela os menores vetores
+ * correspondentes.
+ * 
+ * @example 
+ *   determinarMenoresVetores(); // 
+ * 
+ */
 function determinarMenoresVetores() {
     let n = parseInt(numero.value)
     let arrOfNum = convertAndSort(vetorNumeros.value.replaceAll(" ", "").split(",")).reverse();
-    console.log(arrOfNum)
-    let vetores = gerarcombinacoes(arrOfNum);
-    let resposta = "";
+    let vetores = gerarcombinacoes(arrOfNum,parseInt(n/arrOfNum[0]));
+    let texto = "";
+    let menorTamanho = Infinity;
     for (let i = 0; i < vetores.length; i++) {
         if (somarVetor(vetores[i]) == n) {
-            if(!resposta.includes(vetores[i].sort().toString())){
-                resposta += "["+vetores[i].sort().toString() +"]"+ "<br>";
-                console.log(resposta);
+            if(!texto.includes(vetores[i].sort().toString()) && vetores[i].length == menorTamanho){
+                texto += "["+vetores[i].sort().toString() +"]"+ "<br>";
+            }else if(!texto.includes(vetores[i].sort().toString()) && vetores[i].length < menorTamanho){
+                texto = "["+vetores[i].sort().toString() +"]"+ "<br>";
+                menorTamanho = vetores[i].length;
             }
         }
     }
-    resposta.innerHTML = "<p style='color:red' class='numbers'>Resposta:"+"aaa"+resposta+"</p>";
+    resposta.innerHTML = "<p class='numbers'>Resposta:<br>"+texto+"</p>";
     
 
 }
 
-function gerarcombinacoes(arr) {
+/**
+ * Esta é uma função retorna todas as combinações conforme os valores do vetor informado
+ * 
+ * @example 
+ *   gerarcombinacoes([3,2],4); // [2,2],[2,3]
+ * 
+ * @param   {Number} obrigatorio   Parametro obrigatório
+ * @param   {NUmber} obrigatorio   Parametro obrigatório
+ * @returns {Number}
+ */
+function gerarcombinacoes(arr,x) {
     const result = [];
-    const tamanho = arr.length;
+    const tamanho = x+1;
   
-    const combinacoes = (x, n, m = []) => {
+    const combinacoes = (n, m = []) => {
       if (n > 0) {
         for (var i = 0; i < tamanho; i++) {
-          const value = combinacoes(x, n - 1, [...m,arr[i]]);
+          const value = combinacoes(n - 1, [...m,arr[i]]);
           result.push(value);
         }
       }
       return m;
     }
-    combinacoes(arr.length,tamanho);
-  
+    combinacoes(tamanho);
     return result;
 }
-
-determinarMenoresVetores();
-//determinarMenoresVetores();
