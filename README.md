@@ -7,7 +7,7 @@ A linguagem utilizado para resoluçao dos problemas foi escolhida em JavaScript 
 
 Primeiro passo - Clone o repositório em sua máquina.
 
-####Para executar os programas, pode-se utilizar o Visual Studio Code + Live Server ou apenas abrindo os arquivos HTML diretamente.
+##Para executar os programas, pode-se utilizar o Visual Studio Code + Live Server ou apenas abrindo os arquivos HTML diretamente.
 
 
 ## Desafios
